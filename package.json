@@ -12,7 +12,8 @@
     "dva": "^2.1.0",
     "json-schema-editor-visual": "^1.0.22",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "swagger-parser": "^6.0.5"
   },
   "devDependencies": {
     "babel-plugin-dva-hmr": "^0.3.2",
