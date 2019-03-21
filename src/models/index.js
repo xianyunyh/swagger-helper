@@ -1,4 +1,4 @@
-
+import request from '../utils/request'
 export default {
 
     namespace: 'index',
@@ -8,7 +8,9 @@ export default {
         url:"",
         headers:{},
         params:{},
-        method:"GET"
+        host:"",
+        path:"/",
+        method:"POST"
     },
   
     subscriptions: {
@@ -17,8 +19,9 @@ export default {
     },
   
     effects: {
-      *fetch({ payload }, { call, put }) {  // eslint-disable-line
-        yield put({ type: 'save' });
+      *fetch({ payload }, { call, put }) {
+        const {url} = payload
+        yield call(request,url,{})
       },
     },
   
@@ -29,6 +32,19 @@ export default {
       updateJson(state, {jsonData}){
         console.log(jsonData)
         return { ...state,  jsonData };
+      },
+      updateMethod(state,{payload}){
+        const {method} = payload
+        return {...state,method}
+      },
+      updateHost(state,{payload}){
+        console.log(payload)
+        const {host} = payload
+        return {...state,host}
+      },
+      updatePath(state,{payload}){
+        const {path} = payload
+        return {...state,path}
       }
     },
   
